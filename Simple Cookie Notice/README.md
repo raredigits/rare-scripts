@@ -52,19 +52,12 @@ The script expects the following **mandatory element IDs**. If they are missing 
 ```html
 <div id="cookie-notice" class="cookie-notice">
   <div class="cookie-notice__content">
-    <p class="cookie-notice__title">🍪 Cookies</p>
-    <p class="cookie-notice__text">
-      This website uses cookies to improve functionality.
-    </p>
-    <p class="cookie-notice__link">
-      <a href="/legal/privacy">Privacy policy</a>
-    </p>
-    <button
-      id="cookie-notice-accept"
-      class="cookie-notice__button"
-    >
-      Accept
-    </button>
+    <h3>🍪</h3>
+    <p class="bold">Help yourself to some cookies!</p>
+    <p>We’re using third party cookies and scripts to improve the functionality of this website. For legal purpose, we have a <a href="/legal/privacy">privacy policy</a>.</p>
+    <div class="width-100 right">
+        <button id="cookie-notice-accept" class="cookie-notice__button">Nice!</button>
+    </div>
   </div>
 </div>
 ```
