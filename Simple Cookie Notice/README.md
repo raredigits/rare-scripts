@@ -8,7 +8,7 @@ This snippet displays a basic notification informing users that the website uses
 
 It is designed to be simple, transparent, and easy to integrate into static websites, including Eleventy (11ty).
 
-![Cookie notice preview](./assets/cookies-consent-example.jpg)
+![Cookie notice preview](../assets/cookies-consent-example.jpg)
 
 ## ⚠️ Important Legal Disclaimer
 
@@ -25,8 +25,6 @@ Its sole purpose is to **inform users that cookies are used** and to remember th
 
 If your website is subject to specific legal requirements, consult a qualified legal professional and consider using a dedicated Consent Management Platform (CMP).
 
----
-
 ## Features
 
 - No dependencies
@@ -36,8 +34,6 @@ If your website is subject to specific legal requirements, consult a qualified l
 - Works on static websites
 - Safe cookie defaults (`SameSite=Lax`, `Secure` on HTTPS)
 
----
-
 ## How It Works
 
 1. On page load, the script checks for a cookie named `cookie-notice-dismissed`
@@ -46,8 +42,6 @@ If your website is subject to specific legal requirements, consult a qualified l
 4. The notice is hidden for subsequent visits
 
 Default cookie lifetime: **31 days**
-
----
 
 ## Installation
 
@@ -84,8 +78,6 @@ The script expects the following **mandatory element IDs**. If they are missing 
 
 These IDs are **hard-coded in the JavaScript file**.
 
----
-
 ### 2. Required CSS (Minimum)
 
 The [Rare Styles](raredigits.art) Library already includes styles for the cookie consent block. If you use this script on its own, make sure to add the required styles. At minimum, the notice **must be hidden by default**.
@@ -117,8 +109,6 @@ The [Rare Styles](raredigits.art) Library already includes styles for the cookie
 
 You are free to fully replace these styles with your own design system.
 
----
-
 ### 3. JavaScript Setup
 
 Place the script file anywhere you prefer and include it **after the markup**, or just before the closing `</body>` tag.
@@ -129,8 +119,6 @@ Place the script file anywhere you prefer and include it **after the markup**, o
 
 The script runs automatically on `DOMContentLoaded`. No configuration is required.
 
----
-
 ## Assumptions Made by the Script
 
 - JavaScript is enabled
@@ -139,8 +127,6 @@ The script runs automatically on `DOMContentLoaded`. No configuration is require
 - The notice markup exists on the page where the script runs
 
 If any of these assumptions are false, the script will fail silently.
-
----
 
 ## Customization
 
@@ -152,8 +138,6 @@ You may safely change:
 - Cookie name
 
 If you rename required IDs, you must update the script accordingly.
-
----
 
 ## License
 
