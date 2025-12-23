@@ -107,7 +107,7 @@ You are free to fully replace these styles with your own design system.
 Place the script file anywhere you prefer and include it **after the markup**, or just before the closing `</body>` tag.
 
 ```html
-<script src="/assets/js/cookie-notice.js"></script>
+<script src="/assets/js/cookie-consent.js"></script>
 ```
 
 The script runs automatically on `DOMContentLoaded`. No configuration is required.
