@@ -1,6 +1,6 @@
 # Copy to Clipboard (Vanilla JS)
 
-v.1.0 Stable
+v.1.0.1 Stable
 
 This is a small utility that adds a “copy” icon next to things people actually want to copy. Links. Addresses. Code snippets. Anything.
 
@@ -139,7 +139,7 @@ You can either host the file locally or load it from a CDN. Both options work
 <script src="/js/copy-to-clipboard.min.js"></script>
 
 // CDN:
-<script src="https://cdn.jsdelivr.net/gh/raredigits/rare-scripts@v1.0.0/copy-to-clipboard/copy-to-clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/raredigits/rare-scripts@v.1.0.1/copy-to-clipboard/copy-to-clipboard.min.js"></script>
 ```
 
 Include it once per page, preferably near the end of the document or with defer.
