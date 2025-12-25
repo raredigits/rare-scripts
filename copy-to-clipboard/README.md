@@ -1,6 +1,6 @@
 # Copy to Clipboard (Vanilla JS)
 
-v.1.0.1 Stable
+v2.0.0 Stable
 
 This is a small utility that adds a “copy” icon next to things people actually want to copy. Links. Addresses. Code snippets. Anything.
 
@@ -10,8 +10,8 @@ The script doesn’t care about your layout, your CSS philosophy, or how deeply
 
 That’s the whole contract:
 
-- If the icon has data-copy-target, the script copies text from that element.
-- If not, it looks for the nearest element marked with data-copy.
+- If the icon has `data-copy-target`, the script copies text from that element.
+- If not, it looks for the nearest element marked with `data-copy`.
 - If that element is a link, it copies the URL. Otherwise, it copies the text content.
 
 No duplicated data. No hard-coded containers. No assumptions about structure.
@@ -25,7 +25,7 @@ This is intentional. The script stays dumb. The HTML stays expressive.
 
 ```html
 <a href="https://cdn.jsdelivr.net/script.min.js" data-copy>Copy Link</a>
-<span class="material-icons copy-data-icon" title="Copy">content_copy</span>
+<button class="copy-data-icon" title="Copy link" data-icon="content_copy"></button>
 ```
 
 Clicking the icon copies the full CDN URL.
@@ -34,7 +34,7 @@ Clicking the icon copies the full CDN URL.
 
 ```html
 <span data-copy>0x9f1b...cA11</span>
-<span class="material-icons copy-data-icon" title="Copy">content_copy</span>
+<button class="copy-data-icon" title="Copy link" data-icon="content_copy"></button>
 ```
 
 Works exactly like wallet address copy buttons. Because that’s what it is.
@@ -45,19 +45,9 @@ Use the `.code-block` wrapper and a `button` with the `copy-data-icon` and `mat
 
 ```html
 <div class="code-block">
-    <button class="copy-data-icon material-icons">content_copy</button>
+    <button class="copy-data-icon" title="Copy link" data-icon="content_copy"></button>
 </div>
 ```
-
-To get a result like this:
-
-<div class="code-block text-content-width">
-    <pre><code id="snippet-1">npm i rare-scripts
-# or
-pnpm add rare-scripts</code></pre>
-    <button class="copy-data-icon material-icons" type="button" title="Copy" aria-label="Copy code" data-copy-target="#snippet-1">content_copy</button>
-</div>
-
 
 Use data-copy-target when proximity is not enough or would be ambiguous.
 
@@ -109,10 +99,10 @@ document.addEventListener("click", async (e) => {
   icon.dataset.copyBusy = "1";
 
   const showSuccess = () => {
-    icon.textContent = ICON_SUCCESS;
+    icon.dataset.icon = ICON_SUCCESS;
     clearTimeout(icon._copyTimer);
     icon._copyTimer = setTimeout(() => {
-      icon.textContent = ICON_DEFAULT;
+      icon.dataset.icon = ICON_DEFAULT;
       delete icon.dataset.copyBusy;
     }, RESET_MS);
   };
@@ -139,7 +129,7 @@ You can either host the file locally or load it from a CDN. Both options work
 <script src="/js/copy-to-clipboard.min.js"></script>
 
 // CDN:
-<script src="https://cdn.jsdelivr.net/gh/raredigits/rare-scripts@v.1.0.1/copy-to-clipboard/copy-to-clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/raredigits/rare-scripts@v2.0.0/copy-to-clipboard/copy-to-clipboard.min.js"></script>
 ```
 
 Include it once per page, preferably near the end of the document or with defer.
@@ -149,11 +139,8 @@ Include it once per page, preferably near the end of the document or with def
 Make it feel clickable, not decorative:
 
 ```css
-// css/modules/decorations/_icons.scss
-
 .copy-data-icon {
     cursor: pointer;
-    user-select: none;
 }
 
 .copy-data-icon:hover {
@@ -169,9 +156,19 @@ Design principles (why this won’t rot):
 - Works with links, text, code, addresses.
 - Scales from one icon to hundreds without extra listeners.
 
-If an element should be copied, mark it with `data-copy`.  
-If the icon should copy something specific, tell it where.
+If an element should be copied, mark it with `data-copy`.<br>
+If the icon should copy something specific, tell it where with `data-copy-target`.
 
 Everything else is none of the script’s business.
 
 Visit the [Rare Styles website](https://raredigits.io/scripts/copy-to-clipboard/) to see this script in action.
+
+## Changelog
+
+### v2.0.0
+
+- Changed required selector to `.copy-data-icon`, legacy markup no longer supported
+- Updated CSS to render icons via: `: before` with `content: attr (data-icon)`
+- Replaced Material Icons `<span>` integration with a generic `<button>` element
+- Introduced `data-icon` attribute for icon state control instead of inner text
+- Improved clipboard API handling; deprecated fallback kept as backup
